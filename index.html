@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla de Inicio</title>
+    <!-- Enlazamos nuestra hoja de estilos -->
+    <link rel="stylesheet" href="index.css">
+
+    <!--typo-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✉️</text></svg>">
+</head>
+<body>
+    
+    <div class="carta-grande" id="cartaCumple">
+        
+        <!-- Botón de la estrella para cerrar -->
+        <div class="boton-cerrar" id="cerrarCarta">
+            <!-- Código SVG de una estrella perfecta de 5 puntas -->
+            <svg viewBox="0 0 24 24" fill="#7F0000" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+        </div>
+
+        <!-- Este nuevo contenedor es el que hará la magia del scroll -->
+        <div class="contenido-scroll">
+            <p>no estaba muy segura de enviarte esto, pero soy fiel creyente que la intención cuenta, y por eso lo hago, para que esa pequeña intención no muera.</p>
+            
+            <div class="separador">✩ ✩ ✩ ✩ ✩ ✩ ✩</div>
+            
+            <p>te compré un regalo, pequeño indudablemente, sin embargo ese regalito me hizo darme cuenta que no tenía ni idea de a dónde o a qué hora podía enviarlo, por eso hice esto. algo que me gusta mucho de la digitalidad actual es la gran flexibilidad que tiene, no sé dónde estarás cuando veas esto; ¿en tu casa? ¿en la calle? ¿trabajando? no tengo ni idea y eso es lo bonito e interesante, yo estoy haciendo una página para desearte un bonito cumpleaños que no sé cuándo verás, o siquiera si lo harás,</p>
+            
+        </div>
+    </div>
+
+    <!-- Contenedor principal que simula la pantalla del iPhone 17 -->
+    <main class="iphone17-screen">
+        
+        <div class="envelope-wrapper" id="miSobre">
+    
+            <div class="envelope-back"></div>
+            
+            <div class="letter"></div>
+            
+            <div class="envelope-front"></div>
+            
+            <div class="envelope-flap"></div>
+    
+        </div>
+
+    </main>
+
+    <script>
+        const sobre = document.getElementById("miSobre");
+        const cartaFinal = document.getElementById("cartaCumple");
+        const botonCerrar = document.getElementById("cerrarCarta"); // Seleccionamos la estrella
+
+        // Al tocar el sobre (ABRIR)
+        sobre.addEventListener("click", function() {
+            this.classList.add("open");
+            
+            setTimeout(() => {
+                cartaFinal.classList.add("visible");
+            }, 500); 
+        });
+
+        // Al tocar la estrella (CERRAR)
+        botonCerrar.addEventListener("click", function(event) {
+            // Esto evita que el toque en la estrella también active el toque del sobre por accidente
+            event.stopPropagation();
+            
+            // 1. Ocultamos la carta grande retirando la clase visible
+            cartaFinal.classList.remove("visible");
+            
+            // 2. Esperamos los 800ms que tarda la transición en CSS en hacerla pequeña
+            setTimeout(() => {
+                // Le quitamos la clase open al sobre para que la solapa baje y vuelva a saltar
+                sobre.classList.remove("open");
+            }, 800); 
+        });
+    </script>
+
+</body>
+</html>
