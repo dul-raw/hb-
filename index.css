@@ -16,8 +16,8 @@ body {
 /* 2. Estructura de la Pantalla (iPhone 17) */
 .iphone17-screen {
     /* Medidas exactas que me pediste */
-    width: 100vw;
-    height: 100vh;
+    width: 402px;
+    height: 874px;
     
     /* El degradado lineal de arriba hacia abajo */
     background: linear-gradient(to bottom, #062863, #607EC9);
